@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Бронирование</title>
+
+	<!-- Google font -->
+	<link href="{% static 'https://fonts.googleapis.com/css?family=Raleway:400,700' %}" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'cssforbook/bootstrap.min.css' %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'cssforbook/style.css' %}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="{% static 'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js' %}"></script>
+		  <script src="{% static 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script>
+		<![endif]-->
+    <style>
+  body {
+  background-image: url(https://w.wallha.com/ws/4/QWSa3hFP.jpg);
+}
+    </style>
+
+</head>
+<body>
+<form class="decor" action="{% url 'book_now'%}" method="POST">
+    {% csrf_token %}
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Забронировать Тур</h3>
+        <span class="form-label">Имя</span>
+        <input type="text" name="name" id="name" placeholder="Введите ваше Имя">
+        <span class="form-label">Фамилия</span>
+        <input type="text" name="surname" id="surname" placeholder="Введите вашу Фамилию">
+        <span class="form-label">Номер телефона</span>
+        <input type="text" name="phone" id="phone" placeholder="Введите ваш номер">
+        <span class="form-label">На какой тур вы хотите ?</span>
+        {{form.sightseeing}}
+        <span class="form-label">Email</span>
+        <input type="email" name="email" id="email" placeholder="Введите вашу почту">
+        <span class="form-label">Дата</span>
+        <input type="date" name="date" id="date" placeholder="На какое время ?">
+        <span class="form-label">Количество людей </span>
+        <select name="quantity" id='quantity'>
+									<option value="" label="&nbsp;" selected hidden></option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
+								</select>
+        <input type="submit" value="Забронировать">
+    </div>
+</form>
+</body>
+<!--<body>-->
+<!--	<div id="booking" class="section">-->
+<!--		<div class="section-center">-->
+<!--			<div class="container">-->
+<!--				<div class="row">-->
+<!--					<div class="booking-form">-->
+<!--						<div class="booking-bg"></div>-->
+<!--							<form action="{% url 'book_now'%}" method="POST">-->
+<!--                            {% csrf_token %}-->
+<!--							<div class="form-header">-->
+<!--								<h2>Забронируйте вашу поездку</h2>-->
+<!--							</div>-->
+<!--							<div class="form-group">-->
+<!--								<input class="form-control" type="text" name="name" id="name" placeholder="Введите ваше имя">-->
+<!--								<span class="form-label">Имя</span>-->
+<!--							</div>-->
+<!--                                <div class="form-group">-->
+<!--								<input class="form-control" type="text" name="surname" id="surname" placeholder="Введите вашу Фамилию">-->
+<!--								<span class="form-label">Фамилия</span>-->
+<!--							</div>-->
+<!--							<div class="form-group">-->
+<!--								<input class="form-control" type="tel" name="phone" id="phone" placeholder="Введите ваш номер телефона">-->
+<!--								<span class="form-label">Номер</span>-->
+<!--							</div>-->
+<!--                                <div class="form-group">-->
+<!--								<input class="form-control" type="email" name="email" id="email" placeholder="Введите вашу почту">-->
+<!--								<span class="form-label">Почта</span>-->
+<!--							</div>-->
+<!--							<div class="form-group">-->
+<!--								{{form.sightseeing}}-->
+<!--							</div>-->
+<!--                                <div class="form-group">-->
+<!--								<input class="form-control" type="date" name="date" id="date" placeholder="На какое время ?">-->
+<!--								<span class="form-label">Дата</span>-->
+<!--							<div class="form-group">-->
+<!--								<select class="form-control" name="quantity" id='quantity'>-->
+<!--									<option value="" label="&nbsp;" selected hidden></option>-->
+<!--									<option>1</option>-->
+<!--									<option>2</option>-->
+<!--									<option>3</option>-->
+<!--									<option>4</option>-->
+<!--									<option>5</option>-->
+<!--									<option>6</option>-->
+<!--									<option>7</option>-->
+<!--									<option>8</option>-->
+<!--									<option>9</option>-->
+<!--									<option>10</option>-->
+<!--								</select>-->
+<!--								<span class="select-arrow"></span>-->
+<!--							<span class="form-label">Количество людей</span>-->
+<!--						</div>-->
+<!--						<div class="form-btn">-->
+<!--						<button class="submit-btn">Забронировать!</button>-->
+<!--							</div>-->
+<!--						</form>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	<script src="{% static 'jsforbook/jquery.min.js' %}"></script>-->
+<!--	<script>-->
+<!--		$('.form-control').each(function () {-->
+<!--			floatedLabel($(this));-->
+<!--		});-->
+
+<!--		$('.form-control').on('input', function () {-->
+<!--			floatedLabel($(this));-->
+<!--		});-->
+
+<!--		function floatedLabel(input) {-->
+<!--			var $field = input.closest('.form-group');-->
+<!--			if (input.val()) {-->
+<!--				$field.addClass('input-not-empty');-->
+<!--			} else {-->
+<!--				$field.removeClass('input-not-empty');-->
+<!--			}-->
+<!--		}-->
+<!--	</script>-->
+
+<!--</body>&lt;!&ndash; This templates was made by Colorlib (https://colorlib.com) &ndash;&gt;-->
+
+<!--</html>-->
