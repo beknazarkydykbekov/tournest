@@ -1,1 +1,1 @@
-web: qunicorn tournest.wsgi --log-file-
+web: qunicorn tournest.wsgi --log-file -
